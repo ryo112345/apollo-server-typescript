@@ -18,3 +18,23 @@ type Query {
   featuredListings: [Listing!]!
   listing(id: ID!): Listing
 }
+
+type Mutation {
+  createListing(input: CreateListingInput!): CreateListingResponse!
+}
+
+input CreateListingInput {
+  title: String!
+  description: String!
+  numOfBeds: Int!
+  costPerNight: Float!
+  closedForBookings: Boolean
+  amenities: [ID!]!
+}
+
+type CreateListingResponse {
+  code: Int!
+  success: Boolean!
+  message: String!
+  listing: Listing
+}
